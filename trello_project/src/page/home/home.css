@@ -1,0 +1,12 @@
+.Home__container{
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.task__list{
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
