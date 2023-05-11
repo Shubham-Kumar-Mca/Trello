@@ -16,16 +16,24 @@ npm install react-dnd react-dnd-html5-backend
         {
             "id": "K7VcJNihHWrt0hgVTrbBj",
             "title": "React JS",
+            "isDescriptionVisible" : false,
+            "taskId" : ""
             "tasks": [
                 {
                     "id" : ,
-                    "title" : "",
+                    "taskTitle" : "",
                     "description" : "",
                     "activity" : [
-                        "changes" : "",
-                        "changeedAt" : "3pm"
+                        {
+                            "changes" : "",
+                            "changeedAt" : "3pm"
+                        },
+                        {
+                            "changes" : "",
+                            "changeedAt" : "3pm"
+                        },
                     ]
-                }
+                },
             ]
         }
     ]
