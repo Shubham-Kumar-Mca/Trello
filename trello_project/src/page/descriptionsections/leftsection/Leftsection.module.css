@@ -1,4 +1,131 @@
 .Main_Container{
-    width: 60vw;
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    
+}
+.titleInput{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.titleSection input{
+    /* margin-left: 10px; */
+    height: 25px;
+    border-radius: 6px;
+    border: none;
+    /* padding: 5px; */
+    background: #e7e7e7;
+    font-size: 16px;
+}
+.titleSection h2{
+    width: 100%;
+}
+.titleLogo{
+    /* padding-right: 5px; */
+    font-size: 34px;
+    /* margin-left: 10px; */
+    height: 25px;
+}
+.BtnContent{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    align-items: center;
+
+}
+.EyeLog{
+    background: #e7e7e7;
+    height: 45px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 120px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.DescriptionSection{
+    display: flex;
+    flex-direction: column;
+}
+/* .DescriptionSection button{
+    background: #e7e7e7;
+    height: 45px;
+    border-radius: 6px;
+    padding: 13px;
+    width: 120px;
+    margin-top: 25px;
+    font-size: 14px;
+    font-weight: 500;
+} */
+.DescriptionSection h2{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+.DesLogo{
+    padding-right: 5px;
+    font-size: 18px;
+}
+.DescriptionSection textarea{
+    border-radius: 6px;
+    background: #e7e7e7;
+    width: 350px;
+    padding: 10px;
+}
+
+/* .ActivitySection{
+    margin-top: 20px;
+} */
+
+.ActiveHeading button{
+    background: #e7e7e7;
+    height: 45px;
+    border-radius: 6px;
+    border: none;
+    padding: 13px;
+    width: 120px;
+    margin-top: 25px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.ActiveHeading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 7rem;
+}
+.ActLogo{
+    font-size: 22px;
+    margin-bottom: -2px;
+}
+.ActComments input{
+    margin-left: 10px;
+    height: 30px;
+    border-radius: 6px;
+    border: none;
+    padding: 5px;
+    background: #e7e7e7;
+    font-size: 12px;
+    width: 350px;
+    margin-left: -1px;
+}
+.ShowComments{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.UserLogo{
+    font-size: 35px;
+    padding: 5px;
+}
+.MapComment{
+    display: flex;
+    align-items: center;
+}
+.CommentDate{
+    color: blue;
+    font-size: 14px;
 }
