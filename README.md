@@ -12,7 +12,7 @@ npm install react-dnd react-dnd-html5-backend
 
 ## Data Structure of this project
 
- - TaskList = [
+    - TaskList = [
         {
             "id": "K7VcJNihHWrt0hgVTrbBj",
             "title": "React JS",
