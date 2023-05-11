@@ -10,6 +10,12 @@ Use the package manager [react-dnd](https://react-dnd.github.io/react-dnd/about)
 npm install react-dnd react-dnd-html5-backend
 ```
 
+Use the package manager [react-quill](https://www.npmjs.com/package/react-quill) to install text-editor.
+
+```bash
+npm i react-quill
+```
+
 ## Data Structure of this project
 
     - TaskList = [
@@ -41,9 +47,10 @@ npm install react-dnd react-dnd-html5-backend
 ## Third Party Library used in this project
  -  nanoid
  -  redux
+ -  axios
  -  react-dnd
  -  react-icons
- -  axios
+ -  react-quill
 
 
  ## Collebrators
