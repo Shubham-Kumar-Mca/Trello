@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
-import AddList from '../../components/addlist/AddList'
-import "./home.css"
-import SingleAddList from '../../components/singleaddcart/SingleAddList'
+import "./Home.css"
 
-import SingleList from '../../components/singlelist/SingleList'
 import { AuthContext } from '../../context/AuthContextProvider'
+import TaskList from '../../components/taskList/TaskList'
+import CreateNewTask from '../../components/createNewTask/CreateNewTask'
+import AddList from '../../components/addlist/AddList'
 
 
 const Home = () => {
@@ -15,12 +15,12 @@ const Home = () => {
             <div className='task__list'>
                 {
                     collectionTaskList && collectionTaskList.map(singleTaskList => (
-                        <SingleList key={singleTaskList.id} {...singleTaskList}/>
+                        <TaskList key={singleTaskList.id} {...singleTaskList}/>
                     ))
                 }
             </div>
             {
-                isToggle ? <SingleAddList /> : <AddList  />
+                isToggle ? <CreateNewTask /> : <AddList  />
             }
         </div>
     )

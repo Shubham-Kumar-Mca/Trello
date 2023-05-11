@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import "./addList.css";
+import "./AddList.css";
 import { AiOutlinePlus } from "react-icons/ai"
 import { AuthContext } from '../../context/AuthContextProvider';
 
