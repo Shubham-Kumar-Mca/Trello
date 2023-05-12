@@ -5,48 +5,36 @@ import DescriptionLeftSection from "../../components/descriptionLeftSection/Desc
 import { RxCross2 } from "react-icons/rx";
 import { RiRadioFill } from "react-icons/ri";
 import { AuthContext } from "../../context/AuthContextProvider";
+import { useNavigate, useParams } from "react-router-dom";
 
+const Description = () => {
+  const { id } = useParams();
+  const { collectionTaskList } = useContext(AuthContext); 
+  const [title, setTitle] = useState(""); //title main
+  const [currentTask, setCurrentTask] = useState({}); //only task object
+  const idFromLS = JSON.parse(localStorage.getItem("currentItemId")); //geeting id from Local Storage
+  const navigate = useNavigate();
 
-const Description = ({ id }) => {
-  const { collectionTaskList, updatedData } = useContext(AuthContext);
-  const [currentTaskList, setCurrentTaskList] = useState({});
-  const [currentTask, setCurrentTask] = useState({})
+  //when user click cancel button then redirect to the page home page
+  const handelCloseDiscription = () => {
+    navigate("/");
+  };
 
-
-  const handelCloseDiscription = () =>{
-    const updateDiscription = {...currentTaskList, isDescriptionVisible : false, taskId : ""}
-    updatedData(updateDiscription, currentTaskList.id)
-  }
-
-  //Updating Description here...
-  const updateDescription = (desContent) =>{
-    const updateDes = {...currentTask, description : desContent};
-    const updateCurrentTask = currentTaskList.tasks.map(ele=>{
-      if(ele.id === currentTaskList.taskId){
-        return updateDes
-      }else{
-        return ele
-      }
-    })
-    const updatedCurrentTaskList = {...currentTaskList, tasks : updateCurrentTask}
-    updatedData(updatedCurrentTaskList, id)
-  }
   
-  
-  //Find current TaskList and current task 
+  //Find current current object and current task
   useEffect(() => {
-    const currentTask = collectionTaskList.find(taskList => taskList.id === id);
-    setCurrentTaskList(currentTask);
-    const findCurrentTask = currentTask.tasks.find(ele=>ele.id === currentTask.taskId)
-    setCurrentTask(findCurrentTask)
-  }, [updateDescription]);
+    const findCuurentObj = collectionTaskList.find(
+      (ele) => ele.id === idFromLS
+    );
+    setTitle(findCuurentObj.title);
 
-  
+    const task = findCuurentObj.tasks.find((task) => task.id === id);
+    setCurrentTask(task);
+  }, []);
+
   return (
     <div className={Style.homeDiv}>
-
       <div className={Style.discription__wrapper}>
-
         <div>
           <div className={Style.titleInput}>
             <RiRadioFill className={Style.titleLogo} />
@@ -54,27 +42,26 @@ const Description = ({ id }) => {
           </div>
 
           <div className={Style.cancelBtn}>
-            <RxCross2 onClick={handelCloseDiscription} />
+            <RxCross2 onClick={handelCloseDiscription} /> {/* cancel button */}
           </div>
 
           <div className={Style.ml_5}>
-            <p>in list <u>{currentTaskList?.title}</u> </p>
+            <p>
+              in list <u>{title}</u>{" "}
+            </p>
           </div>
         </div>
 
-
         <div className={Style.mainContainer}>
           <div className={Style.leftDiv}>
-            <DescriptionLeftSection updateDescription = {updateDescription} id = {id}/>
+            <DescriptionLeftSection />
           </div>
 
           <div className={Style.rightDiv}>
             <DescriptionRightSection />
           </div>
         </div>
-
       </div>
-
     </div>
   );
 };

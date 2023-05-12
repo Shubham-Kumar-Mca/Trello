@@ -8,8 +8,8 @@ const AuthContextProvider = ({ children }) => {
     const [collectionTaskList, setCollectionTaskList] = useState(collectionTaskListFromLS);
     const [isToggle, setIsToggle] = useState(false)
 
-    const handelAddList = (value) => {
-        setCollectionTaskList([...collectionTaskList, value])
+    const handelAddList = (newObj) => {
+        setCollectionTaskList([...collectionTaskList, newObj])
         setIsToggle(true)
     }
 

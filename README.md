@@ -22,8 +22,6 @@ npm i react-quill
         {
             "id": "K7VcJNihHWrt0hgVTrbBj",
             "title": "React JS",
-            "isDescriptionVisible" : false,
-            "taskId" : ""
             "tasks": [
                 {
                     "id" : ,
@@ -31,10 +29,12 @@ npm i react-quill
                     "description" : "",
                     "activity" : [
                         {
+                            "id" : ,
                             "changes" : "",
                             "changeedAt" : "3pm"
                         },
                         {
+                            "id" : ,
                             "changes" : "",
                             "changeedAt" : "3pm"
                         },

@@ -53,7 +53,7 @@
 .desc, .ActiveHeading div{
     display: flex;
     align-items: center;
-    gap: .7rem;
+    gap: 1.2rem;
 }
 .desc svg, .ActiveHeading div svg{
     font-size : 1.3rem;
@@ -68,9 +68,9 @@
 
 
 .DescriptionSectionContent{
-    margin-left: 2rem;
+    margin-left: 2.5rem;
     margin-top: 1rem;
-    width: 30rem;
+    width: 29.5rem;
     height: 3rem;
     border-radius: .3rem;
     background-color: #091E420F;
@@ -90,9 +90,9 @@
     padding-top: 10px;
 }
 .comment{
-    margin-left: 2rem;
+    margin-left: 2.5rem;
     margin-top: 0.5rem;
-    width: 30rem;
+    width: 29.5rem;
     height: 2.5rem;
     border-radius: .3rem;
     background-color: #fff;
@@ -158,9 +158,9 @@
     font-size: 14px;
 }
 .Editor, .commentsWrite{
-    margin-left: 2rem;
+    margin-left: 2.5rem;
     margin-top: .5rem;
-    width: 30rem;
+    width: 29.5rem;
 }
 .Editor > div:first-child, .commentsWrite > div:first-child{
     background-color: #fff;
@@ -207,4 +207,34 @@
     margin-left: 2rem;
     margin-top: 0.5rem;
     font-size: 14px;
+}
+
+
+
+.Activity__Container{
+    margin-top: 2rem;
+}
+.Activity__wrapper{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.info{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.info small{
+    color: rgb(84, 83, 83);
+}
+
+.commentContent{
+    width: 27.5rem;
+    padding:  15px 10px;
+    margin-top: .5rem;
+    background-color: #fff;
+    border-radius: 5px;
+    font-size: 1rem;
 }
