@@ -1,14 +1,14 @@
-import React, { useContext } from 'react'
-import "./Home.css"
+import React, { useContext } from 'react';
+import CreateNewTask from '../../components/createNewTask/CreateNewTask';
+import { AuthContext } from '../../context/AuthContextProvider';
+import TaskList from '../../components/taskList/TaskList';
+import AddList from '../../components/addlist/AddList';
+import "./Home.css";
 
-import { AuthContext } from '../../context/AuthContextProvider'
-import TaskList from '../../components/taskList/TaskList'
-import CreateNewTask from '../../components/createNewTask/CreateNewTask'
-import AddList from '../../components/addlist/AddList'
 
 
 const Home = () => {
-    const {collectionTaskList, isToggle} = useContext(AuthContext)
+    const {collectionTaskList, isToggle} = useContext(AuthContext);
 
     return (
         <div className='Home__container'>
@@ -26,4 +26,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Home;
