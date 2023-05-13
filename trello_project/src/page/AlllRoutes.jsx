@@ -1,7 +1,7 @@
 import React from 'react';
-import {Route, Routes} from "react-router-dom"
+import {Route, Routes} from "react-router-dom";
+import Description from "./description/Description";
 import Home from './home/Home';
-import Description from "./description/Description"
 const AlllRoutes = () => {
   return (
     <div>
@@ -11,6 +11,6 @@ const AlllRoutes = () => {
         </Routes>
     </div>
   )
-}
+};
 
 export default AlllRoutes
