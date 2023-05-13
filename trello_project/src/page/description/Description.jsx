@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import Style from "./Description.module.css";
-import DescriptionRightSection from "../../components/descriptionRightSection/DescriptionRightSection";
 import DescriptionLeftSection from "../../components/descriptionLeftSection/DescriptionLeftSection";
-import { RxCross2 } from "react-icons/rx";
-import { RiRadioFill } from "react-icons/ri";
+import DescriptionRightSection from "../../components/descriptionRightSection/DescriptionRightSection";
 import { AuthContext } from "../../context/AuthContextProvider";
 import { useNavigate, useParams } from "react-router-dom";
+import { RiRadioFill } from "react-icons/ri";
+import { RxCross2 } from "react-icons/rx";
+import Style from "./Description.module.css";
 
 const Description = () => {
   const { id } = useParams();
@@ -66,4 +66,4 @@ const Description = () => {
   );
 };
 
-export default Description;
+export default Description
