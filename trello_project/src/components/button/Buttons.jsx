@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 
 export default function Buttons({ Sign, logo, image, className, btnNext }) {
   return (
