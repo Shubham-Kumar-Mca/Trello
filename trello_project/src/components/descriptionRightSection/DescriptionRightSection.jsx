@@ -8,7 +8,6 @@ import WebOutlinedIcon from '@mui/icons-material/WebOutlined';
 import style from "./DescriptionRightSection.module.css"
 import CreditScoreSharpIcon from '@mui/icons-material/CreditScoreSharp';
 import QueryBuilderSharpIcon from '@mui/icons-material/QueryBuilderSharp';
-import Buttons from '../../components/button/Buttons';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import TrendingFlatOutlinedIcon from '@mui/icons-material/TrendingFlatOutlined';
 import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined';
