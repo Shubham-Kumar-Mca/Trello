@@ -1,8 +1,8 @@
 import React, { useContext, useRef, useState } from 'react';
-import { RxCross2 } from "react-icons/rx";
-import { nanoid } from 'nanoid'
-import "./CreateNewTask.css"
 import { AuthContext } from '../../context/AuthContextProvider';
+import { RxCross2 } from "react-icons/rx";
+import { nanoid } from 'nanoid';
+import "./CreateNewTask.css";
 
 const CreateNewTask = () => {
     const { setIsToggle, handelAddList } = useContext(AuthContext)
@@ -17,8 +17,6 @@ const CreateNewTask = () => {
             const newList = {
                 id: nanoid(),
                 title: listTitle,
-                isDescriptionVisible : false,
-                taskId : "",
                 tasks : []
             }
             handelAddList(newList)
