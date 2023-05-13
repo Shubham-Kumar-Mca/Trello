@@ -20,8 +20,8 @@ npm i react-quill
 
     - TaskList = [
         {
-            "id": "K7VcJNihHWrt0hgVTrbBj",
-            "title": "React JS",
+            "id": "",
+            "title": "",
             "tasks": [
                 {
                     "id" : ,
@@ -31,12 +31,12 @@ npm i react-quill
                         {
                             "id" : ,
                             "changes" : "",
-                            "changeedAt" : "3pm"
+                            "changeedAt" : ""
                         },
                         {
                             "id" : ,
                             "changes" : "",
-                            "changeedAt" : "3pm"
+                            "changeedAt" : ""
                         },
                     ]
                 },
