@@ -127,6 +127,7 @@
     font-size: 14px;
     color: #44546F;
     cursor: pointer;
+    width: 7rem;
 }
 
 .ActComments input{
@@ -204,7 +205,7 @@
     background-color: #cfd0d3;
 }
 .content{
-    margin-left: 2rem;
+    margin-left: 2.5rem;
     margin-top: 0.5rem;
     font-size: 14px;
 }

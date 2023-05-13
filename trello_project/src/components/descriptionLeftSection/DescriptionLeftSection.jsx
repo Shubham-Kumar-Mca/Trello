@@ -40,6 +40,7 @@ export default function DescriptionLeftSection() {
   const { collectionTaskList, updatedData } = useContext(AuthContext);
   const [isDescriptionVisible, setIsDiscriptionVisible] = useState(false);
   const [isCommentWrite, setIsCommentWrite] = useState(false);
+  const [isActivityVsible, setIsActivityVisible] = useState(false)
   const [value, setValue] = useState("");
   const [content, setContent] = useState("");
 
@@ -191,7 +192,7 @@ export default function DescriptionLeftSection() {
               <GrList />
               <h2>Activity</h2>
             </div>
-            <button>Hide Details</button>
+            <button onClick={() => setIsActivityVisible(!isActivityVsible)}>{isActivityVsible ? "Hide Details" : "Show Details"}</button>
           </div>
           <div className={Style.ActComments}>
             {isCommentWrite ? (
@@ -217,31 +218,33 @@ export default function DescriptionLeftSection() {
             )}
           </div>
 
-          <div className={Style.Activity__Container}>
-            {activity &&
-              activity.map((singleActivity) => (
-                <div className={Style.Activity__wrapper}>
-                  <div>
-                    <img src="https://trello-members.s3.amazonaws.com/645b7230aa6b087832e739aa/e569e07c1d07c641a798700da85d07f7/50.png" />
-                  </div>
-                  <div>
-                    <p>{singleActivity.text}</p>
-                    <div className={Style.info}>
-                      <h3>Shubham Kumar Jaiswal</h3>
-                      <small>{singleActivity.changeedAt}</small>
+          {isActivityVsible ?
+            <div className={Style.Activity__Container}>
+              {activity &&
+                activity.map((singleActivity) => (
+                  <div className={Style.Activity__wrapper}>
+                    <div>
+                      <img src="https://trello-members.s3.amazonaws.com/645b7230aa6b087832e739aa/e569e07c1d07c641a798700da85d07f7/50.png" />
+                    </div>
+                    <div>
+                      <p>{singleActivity.text}</p>
+                      <div className={Style.info}>
+                        <h3>Shubham Kumar Jaiswal</h3>
+                        <small>{singleActivity.changeedAt}</small>
+                      </div>
+
+                      <p
+                        className={Style.commentContent}
+                        dangerouslySetInnerHTML={{
+                          __html: singleActivity.changes,
+                        }}
+                      />
                     </div>
 
-                    <p
-                    className={Style.commentContent}
-                      dangerouslySetInnerHTML={{
-                        __html: singleActivity.changes,
-                      }}
-                    />
                   </div>
-                
-                </div>
-              ))}
-          </div>
+                ))}
+            </div>
+            : null}
         </div>
       </div>
     </>
