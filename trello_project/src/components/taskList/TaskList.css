@@ -81,6 +81,10 @@ textarea{
     background-color: white;
     box-shadow: 0 0 2px 1px rgb(222, 222, 222);
 }
+.SingleCardItem__list a{
+    color: #213547;
+    text-decoration: none;
+}
 .SingleCardItem__list:hover{
     background-color: rgb(240, 239, 239);
     cursor: pointer;

@@ -1,26 +1,20 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import "./TaskList.css";
+import { AuthContext } from "../../context/AuthContextProvider";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BsThreeDots } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
-import { AuthContext } from "../../context/AuthContextProvider";
 import { nanoid } from "nanoid";
 import { Link } from "react-router-dom";
+import "./TaskList.css";
 
 const TaskList = ({ title, id }) => {
   const { collectionTaskList, updatedData } = useContext(AuthContext);
   const [isTextareaVisible, setIsTextAreaVisible] = useState(false);
   const [task, setTask] = useState("");
   const [currentTaskList, setCurrentTaskList] = useState({});
-  const inputRef = useRef();
-  const [taskId, setTaskId] = useState("");
+  const inputRef = useRef()
 
-//   const handelClickTaskList = (id) => {
-//     updatedData(
-//       { ...currentTaskList, isDescriptionVisible: true, taskId: id },
-//       currentTaskList.id
-//     );
-//   };
+
 
   const handelAddCard = () => {
     if (task === "") {
@@ -54,7 +48,7 @@ const TaskList = ({ title, id }) => {
     updatedData({ ...currentTaskList, title: e.target.innerHTML }, id);
   };
 
-  const handelIdSave = () =>{
+  const handelIdSave = () => {
     localStorage.setItem("currentItemId", JSON.stringify(id))
   }
 
@@ -70,9 +64,9 @@ const TaskList = ({ title, id }) => {
         {currentTaskList &&
           currentTaskList.tasks?.map((SingleCardItem, index) => (
             <li className="SingleCardItem__list" onClick={handelIdSave}>
-                <Link to={`/task/${SingleCardItem.id}`}  key={index}>
-                    {SingleCardItem.taskTitle}
-                </Link>
+              <Link to={`/task/${SingleCardItem.id}`} key={index}>
+                {SingleCardItem.taskTitle}
+              </Link>
             </li>
           ))}
         {isTextareaVisible ? (
