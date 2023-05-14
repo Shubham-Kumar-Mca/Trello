@@ -1,18 +1,22 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContextProvider";
 import { AiOutlinePlus } from "react-icons/ai";
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 import { BsThreeDots } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
 import { nanoid } from "nanoid";
 import { Link } from "react-router-dom";
 import "./TaskList.css";
 
-const TaskList = ({ title, id }) => {
+const TaskList = ({ title, id, handelTaskEdit, handelTaskDelete}) => {
   const { collectionTaskList, updatedData } = useContext(AuthContext);
   const [isTextareaVisible, setIsTextAreaVisible] = useState(false);
+  const [titleEditable, setTitleEditable] = useState(true)
   const [task, setTask] = useState("");
   const [currentTaskList, setCurrentTaskList] = useState({});
-  const inputRef = useRef()
+  const inputRef = useRef();
+  const titleRef = useRef();
 
 
 
@@ -44,26 +48,35 @@ const TaskList = ({ title, id }) => {
     setCurrentTaskList(currentTask);
   }, [handelAddCard]);
 
-  const handelTitleChange = (e) => {
-    updatedData({ ...currentTaskList, title: e.target.innerHTML }, id);
+  const handelTaskListTitleChange = (e, id) => {
+    updatedData({ ...currentTaskList, title: e.target.value }, id);
   };
 
   const handelIdSave = () => {
     localStorage.setItem("currentItemId", JSON.stringify(id))
   }
 
+  const handelFocus = () =>{
+    titleRef.current.focus()
+  }
+
   return (
     <div className="singleList__container">
       <div className="title__section">
-        <p contentEditable onInput={handelTitleChange}>
-          {title}
-        </p>
-        <BsThreeDots />
+        <input ref={titleRef} className={titleEditable ? "" : "input__border"} value={title} disabled = {titleEditable} onChange={(e)=>handelTaskListTitleChange(e,id)}/>
+        <div>
+          <FaEdit onClick={()=>{
+            handelFocus()
+            handelTaskEdit(id)
+            setTitleEditable(false)
+          }}/>
+          <MdDelete onClick={()=>handelTaskDelete(id)}/>
+        </div>
       </div>
       <div className="collect__card">
         {currentTaskList &&
           currentTaskList.tasks?.map((SingleCardItem, index) => (
-            <li className="SingleCardItem__list" onClick={handelIdSave}>
+            <li className="SingleCardItem__list" onClick={handelIdSave} key={index}>
               <Link to={`/task/${SingleCardItem.id}`} key={index}>
                 {SingleCardItem.taskTitle}
               </Link>
@@ -87,7 +100,10 @@ const TaskList = ({ title, id }) => {
           </div>
         ) : (
           <div className="singListBtn">
-            <button onClick={() => setIsTextAreaVisible(true)}>
+            <button onClick={() => {
+              setIsTextAreaVisible(true)
+              setTitleEditable(true)
+            }}>
               <AiOutlinePlus />
               <span>Add a Card</span>
             </button>

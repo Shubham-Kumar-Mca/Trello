@@ -6,15 +6,29 @@
 }
 .title__section{
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    height: 1.8rem;
 }
-.title__section p{
+.title__section input{
     width: 80%;
     padding: 2px 5px;
+    background-color: rgb(240, 239, 239);
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: black;
+    
+}
+.title__section .input__border{
+    border: 2px solid blue;
+    border-radius: 5px;
 }
 .title__section svg{
     cursor: pointer;
+}
+.title__section div{
+    display: flex;
+    gap: 5px;
 }
 .singListBtn button{
     display: flex;
