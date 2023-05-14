@@ -8,14 +8,22 @@ import "./Home.css";
 
 
 const Home = () => {
-    const {collectionTaskList, isToggle} = useContext(AuthContext);
+    const {collectionTaskList, isToggle, setCollectionTaskList} = useContext(AuthContext);
+
+    const handelTaskDelete = (id) =>{
+        const filteredTaskList = collectionTaskList.filter((taskList)=>taskList.id !== id);
+        setCollectionTaskList(filteredTaskList)
+    }
+    const handelTaskEdit = (id) =>{
+
+    }
 
     return (
         <div className='Home__container'>
             <div className='task__list'>
                 {
                     collectionTaskList && collectionTaskList.map(singleTaskList => (
-                        <TaskList key={singleTaskList.id} {...singleTaskList}/>
+                        <TaskList key={singleTaskList.id} handelTaskEdit = {handelTaskEdit} handelTaskDelete = {handelTaskDelete} {...singleTaskList} />
                     ))
                 }
             </div>
