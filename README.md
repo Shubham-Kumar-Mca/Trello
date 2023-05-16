@@ -26,6 +26,7 @@ npm i react-quill
                 {
                     "id" : ,
                     "taskTitle" : "",
+                    "status" : false,
                     "description" : "",
                     "activity" : [
                         {
