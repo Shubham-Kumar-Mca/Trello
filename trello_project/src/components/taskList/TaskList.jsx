@@ -12,7 +12,7 @@ import "./TaskList.css";
 const TaskList = ({ title, id, handelTaskDelete }) => {
   const { collectionTaskList, updatedData } = useContext(AuthContext);
   const [isTextareaVisible, setIsTextAreaVisible] = useState(false);
-  const [taskListEditable, settaskListEditable] = useState(true);
+  // const [taskListEditable, settaskListEditable] = useState(true);
   const [titleEditable, setTitleEditable] = useState(true);
   const [currentTaskList, setCurrentTaskList] = useState({});
   const [task, setTask] = useState("");
@@ -32,6 +32,7 @@ const TaskList = ({ title, id, handelTaskDelete }) => {
         id: nanoid(),
         taskTitle: task,
         description: "",
+        status : false,
         activity: [],
       };
       //Updating current taskList to new task
@@ -95,6 +96,21 @@ const TaskList = ({ title, id, handelTaskDelete }) => {
   }
 
 
+  //status update
+  const handelTaskListEdit = (id) =>{
+    const updatedTaskListTitle = currentTaskList.tasks.map(task=>{
+      if(task.id === id){
+        return {...task, status : !task.status}
+      }else{
+        return task
+      }
+    });
+
+    const updateCurrentTaskList = {...currentTaskList, tasks : updatedTaskListTitle};
+    updatedData(updateCurrentTaskList, updateCurrentTaskList.id);
+  }
+
+
   return (
     <div className="singleList__container">
       <div className="title__section">
@@ -103,7 +119,6 @@ const TaskList = ({ title, id, handelTaskDelete }) => {
           <FaEdit onClick={() => {
             handelFocus()
             setTitleEditable(false)
-            settaskListEditable(true)
           }} />
           <MdDelete onClick={() => handelTaskDelete(id)} />
         </div>
@@ -112,14 +127,14 @@ const TaskList = ({ title, id, handelTaskDelete }) => {
         {currentTaskList &&
           currentTaskList.tasks?.map((SingleCardItem, index) => (
             <li className="SingleCardItem__list" onClick={handelIdSave} key={index}>
-              <Link to={taskListEditable ? `/task/${SingleCardItem.id}` : "/" } key={index}>
-                <input type="text" className={taskListEditable ? "" : "input__border"} ref={taskListRef} disabled = {taskListEditable}  value={SingleCardItem.taskTitle} onChange={(e)=>handelTaskListEditable(e, SingleCardItem.id)}/>
+              <Link to={SingleCardItem.status ? "/" : `/task/${SingleCardItem.id}`} key={index}>
+                <input type="text" className={SingleCardItem.status ? "input__border" : ""} ref={taskListRef} disabled = {!SingleCardItem.status}  value={SingleCardItem.taskTitle} onChange={(e)=>handelTaskListEditable(e, SingleCardItem.id)}/>
               </Link>
 
               <div className="gap">
                 <FaEdit onClick={() => {
+                  handelTaskListEdit(SingleCardItem.id)
                   handelTaskListEditfocus()
-                  settaskListEditable(false)
                   setTitleEditable(true)
                 }}/>
                 <MdDelete onClick={() => handelTaskListDelete(SingleCardItem.id)} />
@@ -147,7 +162,6 @@ const TaskList = ({ title, id, handelTaskDelete }) => {
           <button onClick={() => {
             setIsTextAreaVisible(true)
             setTitleEditable(true)
-            settaskListEditable(true)
           }}>
             <AiOutlinePlus />
             <span>Add a Card</span>
