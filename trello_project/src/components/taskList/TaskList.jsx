@@ -184,7 +184,7 @@ const TaskList = ({ title, id, handelTaskDelete }) => {
           </>
         )}
       </Droppable>
-    </div >
+    </div>
   );
 };
 

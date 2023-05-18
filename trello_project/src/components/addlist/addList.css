@@ -9,7 +9,7 @@
     cursor: pointer;
     border-radius: 5px;
     transition: all 1s ease;
-    margin-top: 0.5rem;
+    margin-top: 0.625rem;
 }
 .pluse__icon__with__txt:hover{
     background-color: black;
