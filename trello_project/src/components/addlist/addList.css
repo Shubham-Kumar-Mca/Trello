@@ -11,6 +11,7 @@
     transition: all 1s ease;
     margin-top: 0.625rem;
 }
+
 .pluse__icon__with__txt:hover{
     background-color: black;
     border: 1px solid black;

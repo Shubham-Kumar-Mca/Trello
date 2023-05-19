@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContextProvider';
 import { AiOutlinePlus } from "react-icons/ai";
-import "./addList.css";
+import "./AddList.css";
 
 const AddList = () => {
     const { setIsToggle } = useContext(AuthContext)
