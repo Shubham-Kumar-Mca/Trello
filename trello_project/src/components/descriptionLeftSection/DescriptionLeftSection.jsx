@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import Style from "./DescriptionLeftSection.module.css";
-import { AiOutlineEye } from "react-icons/ai";
-import { GrTextAlignFull, GrList } from "react-icons/gr";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
 import { AuthContext } from "../../context/AuthContextProvider";
+import Style from "./DescriptionLeftSection.module.css";
+import { GrTextAlignFull, GrList } from "react-icons/gr";
 import { useParams } from "react-router-dom";
+import { AiOutlineEye } from "react-icons/ai";
+import "react-quill/dist/quill.snow.css";
+import ReactQuill from "react-quill";
 import { nanoid } from "nanoid";
 
 const modules = {
@@ -229,7 +229,7 @@ export default function DescriptionLeftSection() {
                     <div>
                       <p>{singleActivity.text}</p>
                       <div className={Style.info}>
-                        <h3>Samruddhi</h3>
+                        <h3>Shubham Kumar Jaiswal</h3>
                         <small>{singleActivity.changeedAt}</small>
                       </div>
 
