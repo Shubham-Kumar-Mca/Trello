@@ -229,7 +229,7 @@ export default function DescriptionLeftSection() {
                     <div>
                       <p>{singleActivity.text}</p>
                       <div className={Style.info}>
-                        <h3>Shubham Kumar Jaiswal</h3>
+                        <h3>Samruddhi</h3>
                         <small>{singleActivity.changeedAt}</small>
                       </div>
 

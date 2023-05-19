@@ -134,20 +134,20 @@ const TaskList = ({ title, id, handelTaskDelete }) => {
                 currentTaskList.tasks?.map((SingleCardItem, index) => (
                   <Draggable draggableId={SingleCardItem.taskTitle} index={index} key={index}>
                     {provided => (
-                    <li className="SingleCardItem__list" onClick={handelIdSave}  ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                      <Link to={SingleCardItem.status ? "/" : `/task/${SingleCardItem.id}`} key={index}>
-                        <input type="text" className={SingleCardItem.status ? "input__border" : ""} ref={taskListRef} disabled={!SingleCardItem.status} value={SingleCardItem.taskTitle} onChange={(e) => handelTaskListEditable(e, SingleCardItem.id)} />
-                      </Link>
+                      <li className="SingleCardItem__list" onClick={handelIdSave} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                        <Link to={SingleCardItem.status ? "/" : `/task/${SingleCardItem.id}`} key={index}>
+                          <input type="text" className={SingleCardItem.status ? "input__border" : ""} ref={taskListRef} disabled={!SingleCardItem.status} value={SingleCardItem.taskTitle} onChange={(e) => handelTaskListEditable(e, SingleCardItem.id)} />
+                        </Link>
 
-                      <div className="gap">
-                        <FaEdit onClick={() => {
-                          handelTaskListEdit(SingleCardItem.id)
-                          handelTaskListEditfocus()
-                          setTitleEditable(true)
-                        }} />
-                        <MdDelete onClick={() => handelTaskListDelete(SingleCardItem.id)} />
-                      </div>
-                    </li>
+                        <div className="gap">
+                          <FaEdit onClick={() => {
+                            handelTaskListEdit(SingleCardItem.id)
+                            handelTaskListEditfocus()
+                            setTitleEditable(true)
+                          }} />
+                          <MdDelete onClick={() => handelTaskListDelete(SingleCardItem.id)} />
+                        </div>
+                      </li>
                     )}
                   </Draggable>
                 ))
@@ -184,7 +184,7 @@ const TaskList = ({ title, id, handelTaskDelete }) => {
           </>
         )}
       </Droppable>
-    </div >
+    </div>
   );
 };
 
