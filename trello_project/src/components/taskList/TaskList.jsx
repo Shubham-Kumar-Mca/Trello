@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContextProvider";
-import { Droppable, Draggable } from 'react-beautiful-dnd'
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 import { AiOutlinePlus } from "react-icons/ai";
-import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
 import { BsThreeDots } from "react-icons/bs";
+import { MdDelete } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
-import { nanoid } from "nanoid";
+import { FaEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { nanoid } from "nanoid";
 import "./TaskList.css"
 
 const TaskList = ({ title, id, handelTaskDelete }) => {
