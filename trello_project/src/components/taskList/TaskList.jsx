@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContextProvider";
+import { Droppable, Draggable } from 'react-beautiful-dnd'
 import { AiOutlinePlus } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -32,7 +33,7 @@ const TaskList = ({ title, id, handelTaskDelete }) => {
         id: nanoid(),
         taskTitle: task,
         description: "",
-        status : false,
+        status: false,
         activity: [],
       };
       //Updating current taskList to new task
@@ -70,105 +71,119 @@ const TaskList = ({ title, id, handelTaskDelete }) => {
   }
 
   //whole taskList delete in once
-  const handelTaskListDelete = (id) =>{
-    const filteredData = currentTaskList.tasks.filter(task=>task.id !== id)
-    const updateCurrentTaskList = {...currentTaskList, tasks : filteredData}
+  const handelTaskListDelete = (id) => {
+    const filteredData = currentTaskList.tasks.filter(task => task.id !== id)
+    const updateCurrentTaskList = { ...currentTaskList, tasks: filteredData }
     updatedData(updateCurrentTaskList, updateCurrentTaskList.id);
   }
 
   //focus, when user want to edit task list title then focus here
-  const handelTaskListEditfocus = () =>{
+  const handelTaskListEditfocus = () => {
     taskListRef.current.focus()
   }
 
   //single tasklist editable
-  const handelTaskListEditable = (e, id) =>{
-    const updatedTaskListTitle = currentTaskList.tasks.map(task=>{
-      if(task.id === id){
-        return {...task, taskTitle : e.target.value}
-      }else{
+  const handelTaskListEditable = (e, id) => {
+    const updatedTaskListTitle = currentTaskList.tasks.map(task => {
+      if (task.id === id) {
+        return { ...task, taskTitle: e.target.value }
+      } else {
         return task
       }
     });
 
-    const updateCurrentTaskList = {...currentTaskList, tasks : updatedTaskListTitle};
+    const updateCurrentTaskList = { ...currentTaskList, tasks: updatedTaskListTitle };
     updatedData(updateCurrentTaskList, updateCurrentTaskList.id);
   }
 
 
   //status update
-  const handelTaskListEdit = (id) =>{
-    const updatedTaskListTitle = currentTaskList.tasks.map(task=>{
-      if(task.id === id){
-        return {...task, status : !task.status}
-      }else{
+  const handelTaskListEdit = (id) => {
+    const updatedTaskListTitle = currentTaskList.tasks.map(task => {
+      if (task.id === id) {
+        return { ...task, status: !task.status }
+      } else {
         return task
       }
     });
 
-    const updateCurrentTaskList = {...currentTaskList, tasks : updatedTaskListTitle};
+    const updateCurrentTaskList = { ...currentTaskList, tasks: updatedTaskListTitle };
     updatedData(updateCurrentTaskList, updateCurrentTaskList.id);
   }
 
 
   return (
-    <div className="singleList__container">
-      <div className="title__section">
-        <input ref={titleRef} className={titleEditable ? "" : "input__border"} value={title} disabled={titleEditable} onChange={(e) => handelTaskListTitleChange(e, id)} />
-        <div>
-          <FaEdit onClick={() => {
-            handelFocus()
-            setTitleEditable(false)
-          }} />
-          <MdDelete onClick={() => handelTaskDelete(id)} />
-        </div>
-      </div>
-      <div className="collect__card">
-        {currentTaskList &&
-          currentTaskList.tasks?.map((SingleCardItem, index) => (
-            <li className="SingleCardItem__list" onClick={handelIdSave} key={index}>
-              <Link to={SingleCardItem.status ? "/" : `/task/${SingleCardItem.id}`} key={index}>
-                <input type="text" className={SingleCardItem.status ? "input__border" : ""} ref={taskListRef} disabled = {!SingleCardItem.status}  value={SingleCardItem.taskTitle} onChange={(e)=>handelTaskListEditable(e, SingleCardItem.id)}/>
-              </Link>
 
-              <div className="gap">
+    <div className="singleList__container">
+      <Droppable droppableId={id}>
+        {provided => (
+          <>
+            <div className="title__section">
+              <input ref={titleRef} className={titleEditable ? "" : "input__border"} value={title} disabled={titleEditable} onChange={(e) => handelTaskListTitleChange(e, id)} />
+              <div>
                 <FaEdit onClick={() => {
-                  handelTaskListEdit(SingleCardItem.id)
-                  handelTaskListEditfocus()
-                  setTitleEditable(true)
-                }}/>
-                <MdDelete onClick={() => handelTaskListDelete(SingleCardItem.id)} />
+                  handelFocus()
+                  setTitleEditable(false)
+                }} />
+                <MdDelete onClick={() => handelTaskDelete(id)} />
               </div>
-            </li>
-          ))}
-      {isTextareaVisible ? (
-        <div>
-          <textarea
-            placeholder="Enter the title for this card..."
-            value={task}
-            ref={inputRef}
-            onChange={(e) => setTask(e.target.value)}
-          />
-          <div className="addCard__section">
-            <div>
-              <button onClick={handelAddCard}>Add card</button>
-              <RxCross2 onClick={() => setIsTextAreaVisible(false)} />
             </div>
-            <BsThreeDots />
-          </div>
-        </div>
-      ) : (
-        <div className="singListBtn">
-          <button onClick={() => {
-            setIsTextAreaVisible(true)
-            setTitleEditable(true)
-          }}>
-            <AiOutlinePlus />
-            <span>Add a Card</span>
-          </button>
-        </div>
-      )}
-    </div>
+            <div className="collect__card" {...provided.droppableProps} ref={provided.innerRef}>
+              {
+                currentTaskList &&
+                currentTaskList.tasks?.map((SingleCardItem, index) => (
+                  <Draggable draggableId={SingleCardItem.taskTitle} index={index} key={index}>
+                    {provided => (
+                    <li className="SingleCardItem__list" onClick={handelIdSave}  ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                      <Link to={SingleCardItem.status ? "/" : `/task/${SingleCardItem.id}`} key={index}>
+                        <input type="text" className={SingleCardItem.status ? "input__border" : ""} ref={taskListRef} disabled={!SingleCardItem.status} value={SingleCardItem.taskTitle} onChange={(e) => handelTaskListEditable(e, SingleCardItem.id)} />
+                      </Link>
+
+                      <div className="gap">
+                        <FaEdit onClick={() => {
+                          handelTaskListEdit(SingleCardItem.id)
+                          handelTaskListEditfocus()
+                          setTitleEditable(true)
+                        }} />
+                        <MdDelete onClick={() => handelTaskListDelete(SingleCardItem.id)} />
+                      </div>
+                    </li>
+                    )}
+                  </Draggable>
+                ))
+              }
+              {provided.placeholder}
+              {isTextareaVisible ? (
+                <div>
+                  <textarea
+                    placeholder="Enter the title for this card..."
+                    value={task}
+                    ref={inputRef}
+                    onChange={(e) => setTask(e.target.value)}
+                  />
+                  <div className="addCard__section">
+                    <div>
+                      <button onClick={handelAddCard}>Add card</button>
+                      <RxCross2 onClick={() => setIsTextAreaVisible(false)} />
+                    </div>
+                    <BsThreeDots />
+                  </div>
+                </div>
+              ) : (
+                <div className="singListBtn">
+                  <button onClick={() => {
+                    setIsTextAreaVisible(true)
+                    setTitleEditable(true)
+                  }}>
+                    <AiOutlinePlus />
+                    <span>Add a Card</span>
+                  </button>
+                </div>
+              )}
+            </div>
+          </>
+        )}
+      </Droppable>
     </div >
   );
 };
