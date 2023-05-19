@@ -1,21 +1,18 @@
 import React, { useContext } from "react";
 import CreateNewTask from "../../components/createNewTask/CreateNewTask";
-import { DragDropContext } from "react-beautiful-dnd";
 import { AuthContext } from "../../context/AuthContextProvider";
 import TaskList from "../../components/taskList/TaskList";
 import AddList from "../../components/addlist/AddList";
-import "./home.css";
+import { DragDropContext } from "react-beautiful-dnd";
 import Navbar from "../../components/navbar/Navbar";
+import "./home.css";
 
 const Home = () => {
-  const { collectionTaskList, isToggle, setCollectionTaskList } =
-    useContext(AuthContext);
+  const { collectionTaskList, isToggle, setCollectionTaskList } = useContext(AuthContext);
 
   //Delete Entire Task List in once
   const handelTaskDelete = (id) => {
-    const filteredTaskList = collectionTaskList.filter(
-      (taskList) => taskList.id !== id
-    );
+    const filteredTaskList = collectionTaskList.filter((taskList) => taskList.id !== id);
     setCollectionTaskList(filteredTaskList);
   };
 
@@ -24,16 +21,10 @@ const Home = () => {
     if (destination === undefined || destination === null) return null;
 
     // Make sure we're actually moving the item
-    if (
-      source.droppableId === destination.droppableId &&
-      destination.index === source.index
-    )
-      return null;
+    if (source.droppableId === destination.droppableId && destination.index === source.index) return null;
 
     //find current object
-    const startCurrentObj = collectionTaskList.find(
-      (taskList) => taskList.id === source.droppableId
-    );
+    const startCurrentObj = collectionTaskList.find((taskList) => taskList.id === source.droppableId);
     const dropebalCurrentObj = collectionTaskList.find(
       (taskList) => taskList.id === destination.droppableId
     );
@@ -86,29 +77,27 @@ const Home = () => {
   };
 
   return (
-    <>
-      <div className="maindiv">
-        <div className="nav">
-          <Navbar />
-        </div>
-        <div className="Home__container">
-          <div className="task__list">
-            <DragDropContext onDragEnd={onDragEnd}>
-              {collectionTaskList &&
-                collectionTaskList.map((singleTaskList) => (
-                  <TaskList
-                    key={singleTaskList.id}
-                    handelTaskDelete={handelTaskDelete}
-                    {...singleTaskList}
-                  />
-                ))}
-            </DragDropContext>
-          </div>
-
-          {isToggle ? <CreateNewTask /> : <AddList />}
-        </div>
+    <div className="maindiv">
+      <div className="nav">
+        <Navbar />
       </div>
-    </>
+      <div className="Home__container">
+        <div className="task__list">
+          <DragDropContext onDragEnd={onDragEnd}>
+            {collectionTaskList &&
+              collectionTaskList.map((singleTaskList) => (
+                <TaskList
+                  key={singleTaskList.id}
+                  handelTaskDelete={handelTaskDelete}
+                  {...singleTaskList}
+                />
+              ))}
+          </DragDropContext>
+        </div>
+
+        {isToggle ? <CreateNewTask /> : <AddList />}
+      </div>
+    </div>
   );
 };
 
