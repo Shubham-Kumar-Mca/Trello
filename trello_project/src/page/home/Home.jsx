@@ -4,7 +4,7 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { AuthContext } from "../../context/AuthContextProvider";
 import TaskList from "../../components/taskList/TaskList";
 import AddList from "../../components/addlist/AddList";
-import "./Home.css";
+import "./home.css";
 import Navbar from "../../components/navbar/Navbar";
 
 const Home = () => {
