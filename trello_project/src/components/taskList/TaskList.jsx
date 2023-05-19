@@ -8,7 +8,7 @@ import { BsThreeDots } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
 import { nanoid } from "nanoid";
 import { Link } from "react-router-dom";
-import "./TaskList.css";
+import "./TaskList.css"
 
 const TaskList = ({ title, id, handelTaskDelete }) => {
   const { collectionTaskList, updatedData } = useContext(AuthContext);
@@ -134,20 +134,20 @@ const TaskList = ({ title, id, handelTaskDelete }) => {
                 currentTaskList.tasks?.map((SingleCardItem, index) => (
                   <Draggable draggableId={SingleCardItem.taskTitle} index={index} key={index}>
                     {provided => (
-                    <li className="SingleCardItem__list" onClick={handelIdSave}  ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                      <Link to={SingleCardItem.status ? "/" : `/task/${SingleCardItem.id}`} key={index}>
-                        <input type="text" className={SingleCardItem.status ? "input__border" : ""} ref={taskListRef} disabled={!SingleCardItem.status} value={SingleCardItem.taskTitle} onChange={(e) => handelTaskListEditable(e, SingleCardItem.id)} />
-                      </Link>
+                      <li className="SingleCardItem__list" onClick={handelIdSave} ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                        <Link to={SingleCardItem.status ? "/" : `/task/${SingleCardItem.id}`} key={index}>
+                          <input type="text" className={SingleCardItem.status ? "input__border" : ""} ref={taskListRef} disabled={!SingleCardItem.status} value={SingleCardItem.taskTitle} onChange={(e) => handelTaskListEditable(e, SingleCardItem.id)} />
+                        </Link>
 
-                      <div className="gap">
-                        <FaEdit onClick={() => {
-                          handelTaskListEdit(SingleCardItem.id)
-                          handelTaskListEditfocus()
-                          setTitleEditable(true)
-                        }} />
-                        <MdDelete onClick={() => handelTaskListDelete(SingleCardItem.id)} />
-                      </div>
-                    </li>
+                        <div className="gap">
+                          <FaEdit onClick={() => {
+                            handelTaskListEdit(SingleCardItem.id)
+                            handelTaskListEditfocus()
+                            setTitleEditable(true)
+                          }} />
+                          <MdDelete onClick={() => handelTaskListDelete(SingleCardItem.id)} />
+                        </div>
+                      </li>
                     )}
                   </Draggable>
                 ))

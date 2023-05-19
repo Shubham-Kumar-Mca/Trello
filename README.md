@@ -47,9 +47,9 @@ npm i react-quill
 
 ## Third Party Library used in this project
  -  nanoid
- -  redux
+ -  localStorage
  -  axios
- -  react-dnd
+ -  react-beautiful-dnd
  -  react-icons
  -  react-quill
 
