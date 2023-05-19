@@ -8,7 +8,7 @@ import { BsThreeDots } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
 import { nanoid } from "nanoid";
 import { Link } from "react-router-dom";
-import "./TaskList.css";
+import "./TaskList.css"
 
 const TaskList = ({ title, id, handelTaskDelete }) => {
   const { collectionTaskList, updatedData } = useContext(AuthContext);
